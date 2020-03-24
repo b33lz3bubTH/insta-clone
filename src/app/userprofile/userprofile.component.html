@@ -1,0 +1,26 @@
+<div class="container my-5">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-2">
+                <img [src]="userobj.profileLink" class="w-100" style="border-radius: 50%;">
+            </div>
+            <div class="col-md-10 my-3">
+                <h5>{{ userobj.username }}</h5>
+                <p style="font-size: 17px;">Follower: <strong>{{ userobj.followerCount }}</strong> | Following: <strong>{{ userobj.followingCount }}</strong> </p>
+                <h6>{{ userobj.description }}</h6>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="jumbotron my-2" style="background: 0 !important;">
+        <div class="card-group">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let p of userobj.userposts" >
+                    <div class="card mx-1 my-2">
+                        <img class="card-img-top" [src]="p.postLink" alt="p.postid" (click)="__DEBUG__(p.postid)">
+                      </div>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

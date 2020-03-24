@@ -1,0 +1,33 @@
+<div class="card my-3" style="width: 36rem;">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-sm-1">
+        <img src="https://i.imgur.com/hqXuRsh.png" style="width:30px;" class="img-round">
+        <!-- as of now static -->
+      </div>
+      <div class="col-sm-10">
+        <p class="my-1">{{pobj.username}}</p>
+      </div>
+    </div>
+  </div>
+  <img class="card-img-top" [src]="pobj.postLink" alt="Card image cap">
+  <div class="card-body">
+    <button (click)="likePost(pobj.postid,pobj)" class="btn btn-sm btn-outline-danger my-2" *ngIf="!pobj.hasLiked">Like &lt;3</button>
+    <button (click)="unlikePost(pobj.postid,pobj)" class="btn btn-sm btn-danger my-2" *ngIf="pobj.hasLiked">Unlike</button>
+    <br>
+    <a href="">{{pobj.totalLikeCount}} Likes</a>
+    <h5 class="card-title">{{pobj.postTitle}}</h5>
+    <p class="card-text">{{pobj.postDescription}}</p>
+    <div *ngIf="pobj.hasCommented">
+      <!-- <p class="card-text" >{{pobj.hasCommented.commentedBy}}: <strong>{{pobj.hasCommented.commentPassed}}</strong></p> -->
+      <h6 *ngFor="let x of pobj.hasCommented" class="card-text"><strong>{{ x.commentedBy }}:</strong> {{ x.commentPassed }}</h6>
+    </div>
+    <hr class="w-50">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" #comPost placeholder="Add a comment...." style="border: 0px; border-bottom:1px solid lightgrey" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="button" (click)="commentOnPost(comPost.value,pobj.postid,pobj)" style="border:0">+</button>
+      </div>
+    </div>
+  </div>
+</div>
