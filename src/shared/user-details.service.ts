@@ -23,5 +23,5 @@ export class UserDetails {
     ];
 
     //fetch from backend and init all these.
-    
+    // new UserPost(WHOS POST,POST_ID,IMGLINK,TOTAL LIKES,POST TITLE,POST DESCRIPTION, LOGGED_IN_USER_LIKED_IT_OR_NOT),
 }
