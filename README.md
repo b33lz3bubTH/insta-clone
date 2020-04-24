@@ -1,4 +1,6 @@
-# watiting for my ******* friend to write the backend API
-# Iggclone
+# PhotoSharingApp in other words its instagram clone
+
+Output:
   youtube - https://www.youtube.com/watch?v=KrTsimy7hd4
+
 # proj-instaclone
