@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserDetails } from 'src/services/user-details.service';
+import { UserAuthentication } from 'src/services/user-authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,7 @@ import { UserDetails } from 'src/services/user-details.service';
 export class RegisterComponent implements OnInit {
   @ViewChild('f', {static:false}) loginForm: NgForm;
 
-  constructor(private userServObj: UserDetails) { }
+  constructor(private userServObj: UserAuthentication) { }
 
   ngOnInit(): void {
   }

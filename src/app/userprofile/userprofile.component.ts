@@ -9,7 +9,12 @@ import { PostStorage } from 'src/services/post-storage.service';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor( public userobj: UserDetails, public postServObj: PostStorage) { }
+  constructor( public userobj: UserDetails, public postServObj: PostStorage) { 
+    userobj.getCurrentLoggedUserDetails().subscribe(res => {
+      console.log(res);
+      this.userobj.setDetails(res['data']['username'], res['data']['followerCount'], res['data']['followingCount'])
+    });
+  }
 
   ngOnInit(): void {
   }

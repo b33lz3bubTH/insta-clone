@@ -1,35 +1,43 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BackendDetails } from 'src/services/backend-details.service';
 
-@Injectable({providedIn:'root'})
+@Injectable({providedIn: 'root'})
 export class UserDetails {
+    uuid:number = 0;
     username:string = "Sourav"; // set this
-    profileLink:string = "https://i.imgur.com/hqXuRsh.png"; //good plan with this.
+    profileLink:string = "https://via.placeholder.com/1000"; //good plan with this.
     followerCount: number = 420; // set this
     followingCount:number = 69; // set this
     description: string = "WELCOME TO MY PROFILE";
-    //fetch from backend and init all these.
-    constructor(private http: HttpClient, private backendConfigObj: BackendDetails){
+    jwtToken = '';
+    constructor(private http: HttpClient, private backendConfigObj: BackendDetails){}
 
+    setDetails(username, followerCount, followingCount){
+        this.username = username;
+        this.followerCount = followerCount;
+        this.followingCount = followingCount;
     }
-    registerANewAccount(inputObj){
-        const backendApiData = {
-            "username": inputObj.username,
-            "email": inputObj.email,
-            "password": inputObj.password
-        }
-        return this.http.post(this.backendConfigObj.registrationApi, backendApiData, {
-            headers: new HttpHeaders({'Content-Type': 'application/json'})
+
+    getCurrentLoggedUserDetails() {
+        return this.http.get(this.backendConfigObj.fetchUserDetailsApi(this.uuid), {
+            headers: new HttpHeaders().set('Authorization', ('Bearer ' + this.jwtToken))
         });
     }
-    loginUser(inputObj){
-        const backendApiData = {
-            "username":inputObj.username,
-            "password":inputObj.password
+
+
+    setJWTToLocal(token,uuid){
+        this.jwtToken = token;
+        this.uuid = uuid;
+        localStorage.setItem('JWT', token);
+        localStorage.setItem('UUID', uuid);
+    }
+    getJwtFromLocal(){
+        if (localStorage.getItem('JWT') && localStorage.getItem('UUID')){
+            this.jwtToken = localStorage.getItem('JWT');
+            this.uuid = +localStorage.getItem('UUID');
+            return true;
         }
-        return this.http.post(this.backendConfigObj.loginApi, backendApiData, {
-            headers: new HttpHeaders({'Content-Type': 'application/json'})
-        });
+        return false;
     }
 }
