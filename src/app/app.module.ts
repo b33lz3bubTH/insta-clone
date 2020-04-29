@@ -12,6 +12,7 @@ import { HomecomponentComponent } from './homecomponent/homecomponent.component'
 import { FooterComponent } from './footer/footer.component';
 
 import { UserAuthModule } from './userauth/userauth.module';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserAuthModule } from './userauth/userauth.module';
     UserspostComponent,
     UserprofileComponent,
     HomecomponentComponent,
-    FooterComponent
+    FooterComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
