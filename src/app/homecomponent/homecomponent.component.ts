@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDetails } from '../../shared/user-details.service';
+import { UserDetails } from '../../services/user-details.service';
+import { PostStorage } from 'src/services/post-storage.service';
 
 @Component({
   selector: 'app-homecomponent',
@@ -8,7 +9,7 @@ import { UserDetails } from '../../shared/user-details.service';
 })
 export class HomecomponentComponent implements OnInit {
 
-  constructor(public userObj: UserDetails) {
+  constructor(public userObj: UserDetails, public postServObj: PostStorage) {
     console.log(this.userObj);
    }
 

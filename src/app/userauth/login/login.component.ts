@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserDetails } from 'src/services/user-details.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,16 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('f', {static:false}) loginForm: NgForm;
-  constructor() { }
+  constructor(private userServObj: UserDetails) { }
 
   ngOnInit(): void {
   }
   login(){
-    console.log("HELLO: ", this.loginForm.value);
+    this.userServObj.loginUser(this.loginForm.value).subscribe( res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
   }
 
 }

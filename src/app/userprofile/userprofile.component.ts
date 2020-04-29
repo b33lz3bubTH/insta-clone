@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDetails } from 'src/shared/user-details.service';
+import { UserDetails } from 'src/services/user-details.service';
+import { PostStorage } from 'src/services/post-storage.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -8,7 +9,7 @@ import { UserDetails } from 'src/shared/user-details.service';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor( public userobj: UserDetails) { }
+  constructor( public userobj: UserDetails, public postServObj: PostStorage) { }
 
   ngOnInit(): void {
   }

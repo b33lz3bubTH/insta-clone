@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserDetails } from 'src/services/user-details.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   @ViewChild('f', {static:false}) loginForm: NgForm;
 
-  constructor() { }
+  constructor(private userServObj: UserDetails) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,18 @@ export class RegisterComponent implements OnInit {
     console.log(this.loginForm.value);
     if(this.loginForm.value.password !== this.loginForm.value.conform_password){
       console.log("pass doesnt match");
-      //throw an error like password doesnt match
-    } 
+      //throw an error if doesnt match
+      //as of now just returning and dropping the api call.
+    }
+    // api call to post the request.
+    this.userServObj.registerANewAccount(this.loginForm.value).subscribe(response => {
+      console.log("ACCOUNT CREATED");
+      console.log(response);
+      this.loginForm.reset();
+    }, err => {
+      console.log("ERROR OCCURED", err.error.msg.msg);
+    });
   }
 }
+
+// when ever error occuring err.error.msg.msg must give me the the actual error message

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserPost} from '../shared-models/posts.model';
-import { UserDetails } from 'src/shared/user-details.service';
+import { UserDetails } from 'src/services/user-details.service';
 @Component({
   selector: 'app-userspost',
   templateUrl: './userspost.component.html',
