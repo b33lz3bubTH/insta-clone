@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-post',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-
+  @ViewChild('f', {static:false}) loginForm: NgForm;
   constructor() { }
 
   ngOnInit(): void {
@@ -14,5 +15,9 @@ export class CreatePostComponent implements OnInit {
   updateFileName(inputObj1: HTMLInputElement, inputObj2: HTMLElement){
     let name = inputObj1.value.split("\\");
     inputObj2.innerText = name[name.length-1];
+  }
+
+  addAPost(){
+    console.log(this.loginForm.value);
   }
 }

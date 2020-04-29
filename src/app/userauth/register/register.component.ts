@@ -13,12 +13,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   register(){
     console.log(this.loginForm.value);
     if(this.loginForm.value.password !== this.loginForm.value.conform_password){
       console.log("pass doesnt match");
       //throw an error like password doesnt match
-    }
-    
+    } 
   }
 }
