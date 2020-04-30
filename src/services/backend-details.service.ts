@@ -7,4 +7,5 @@ export class BackendDetails{
     registrationApi = this.baseApi + 'register';
     loginApi = this.baseApi + 'login'; 
     fetchUserDetailsApi = (uuid) => this.baseApi + 'get-user-details/' + uuid;
+    postingPostAPI = (uuid) => this.baseApi + 'new-post/' + uuid;
 }

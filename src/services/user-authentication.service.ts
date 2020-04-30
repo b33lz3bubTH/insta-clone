@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BackendDetails } from 'src/services/backend-details.service';
+
 @Injectable({providedIn:'root'})
 export class UserAuthentication {
     //fetch from backend and init all these.
