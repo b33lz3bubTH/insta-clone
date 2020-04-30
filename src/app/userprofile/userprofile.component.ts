@@ -12,8 +12,16 @@ export class UserprofileComponent implements OnInit {
   constructor( public userobj: UserDetails, public postServObj: PostStorage) { 
     userobj.getCurrentLoggedUserDetails().subscribe(res => {
       console.log(res);
-      this.userobj.setDetails(res['data']['username'], res['data']['followerCount'], res['data']['followingCount'])
+      this.userobj.setDetails(res['data']['username'], res['data']['followerCount'], res['data']['followingCount']);
+    }, err => {
+      console.log(err);
     });
+    postServObj.fetchCurrentUsersPost().subscribe(res => {
+      console.log(res['data']);
+      postServObj.userposts = res['data'];
+    }, err =>{
+      console.log(err);
+    })
   }
 
   ngOnInit(): void {

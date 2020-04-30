@@ -1,11 +1,18 @@
-<div class="container my-5">
+
+<div class="container my-5" *ngIf="!userAuthObj.isLoggedIn">
+    <div class="jumotron my-5 text-center">
+        <h1 class="display-5">LOGING TO VIEW HOME PAGE BRO.</h1>
+    </div>
+</div>
+
+<div class="container my-5" *ngIf="userAuthObj.isLoggedIn">
     <div class="row justify-content-center">
         <app-userspost [postObj]="x" *ngFor="let x of postServObj.allPost"></app-userspost>
     </div>
 </div>
 
 
-<div class="socialMediaButtons">
+<div class="socialMediaButtons" *ngIf="userAuthObj.isLoggedIn">
     <div id="twitterButton" class="socialMediaButton">
         <button routerLink="/new-post" class="btn btn-lg btn-outline-danger custom-circle-button">+</button>
     </div>

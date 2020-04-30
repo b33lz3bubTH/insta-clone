@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-4" *ngFor="let p of postServObj.userposts">
                     <div class="card mx-1 my-2">
-                        <img class="card-img-top" [src]="p.postLink" alt="p.postid" (click)="__DEBUG__(p.postid)">
+                        <img class="card-img-top" [src]="'http://localhost:8000/'+p.postLink" alt="p.postid" (click)="__DEBUG__(p.postid)">
                       </div>
                 </div>
             </div>
