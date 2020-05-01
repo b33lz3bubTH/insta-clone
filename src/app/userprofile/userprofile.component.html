@@ -1,23 +1,30 @@
-<div class="container my-5">
+<div class="container my-2">
     <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-2">
-                <img [src]="userobj.profileLink" class="w-100" style="border-radius: 50%;">
-            </div>
-            <div class="col-md-10 my-3">
-                <h5>{{ userobj.username }}</h5>
-                <p style="font-size: 17px;">Follower: <strong>{{ userobj.followerCount }}</strong> | Following: <strong>{{ userobj.followingCount }}</strong> </p>
-                <h6>{{ userobj.description }}</h6>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <img [src]="userobj.profileLink" class="w-100" style="border-radius: 50%;">
+                </div>
+                <div class="col-md-8 my-4">
+                    <h3><strong>{{ userobj.username }}</strong></h3>
+                    <p style="font-size: 17px;"><strong>{{ userobj.followerCount }}</strong> follower | <strong>{{ userobj.followingCount }}</strong> following | <strong>{{ postServObj.userposts.length }}</strong> Posts </p>
+                    <h6>{{ userobj.description }}</h6>
+                </div>
+                <div class="col-md-1"></div>
+
             </div>
         </div>
     </div>
+</div>
+<div class="container">
     <hr>
-    <div class="jumbotron my-2" style="background: 0 !important;">
+    <div class="jumbotron" style="background: 0 !important;">
         <div class="card-group">
             <div class="row">
                 <div class="col-md-4" *ngFor="let p of postServObj.userposts">
-                    <div class="card mx-1 my-2" style="max-width:1000px; max-height: 1000px;">
-                        <img class="card-img-top" [src]="'http://localhost:8000/'+p.postLink" alt="p.postid" (click)="__DEBUG__(p.postid)">
+                    <div class="mx-1 my-2 box">
+                        <img class="card-img-top cus_img img-thumbnail" [src]="'http://localhost:8000/'+p.postLink" alt="p.postid" (click)="__DEBUG__(p.postid)">
                     </div>
                 </div>
             </div>
