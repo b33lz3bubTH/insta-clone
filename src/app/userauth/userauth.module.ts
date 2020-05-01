@@ -25,6 +25,6 @@ import { UserAuthRouting } from './userauth.routing.module';
         LoginComponent,
         RegisterComponent
     ]
-
+    
 })
 export class UserAuthModule {}

@@ -23,6 +23,11 @@ export class UserDetails {
         return this.http.get(this.backendConfigObj.fetchUserDetailsApi(id), {});
     }
 
+    logoutAction(){
+        this.jwtToken = "";
+        this.username = '';
+        this.uuid = 0;
+    }
 
     setJWTToLocal(token,uuid, username){
         this.jwtToken = token;

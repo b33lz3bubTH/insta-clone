@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserDetails } from '../../services/user-details.service';
 import { PostStorage } from 'src/services/post-storage.service';
 import { UserAuthentication } from 'src/services/user-authentication.service';
@@ -9,7 +9,7 @@ import { UserPost } from '../shared-models/posts.model';
   templateUrl: './homecomponent.component.html',
   styleUrls: ['./homecomponent.component.css']
 })
-export class HomecomponentComponent implements OnInit {
+export class HomecomponentComponent implements OnInit,OnDestroy {
 
   constructor(public userObj: UserDetails, public postServObj: PostStorage, public userAuthObj: UserAuthentication) {
     console.log(this.userObj);
@@ -27,5 +27,8 @@ export class HomecomponentComponent implements OnInit {
       })
     }
   }
-  
+
+  ngOnDestroy() {
+    this.postServObj.allPost = [];
+  }
 }

@@ -17,6 +17,8 @@ import { UserAuthModule } from './userauth/userauth.module';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 
+import { AfterLoggedAuthGuard } from './guards/after-login.guard.service';
+import { BeforeLoggedAuthGuard } from './guards/before-login.guard.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     UserAuthModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AfterLoggedAuthGuard,BeforeLoggedAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

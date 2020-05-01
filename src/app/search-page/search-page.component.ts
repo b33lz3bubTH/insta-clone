@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { UserActions } from 'src/services/user-actions.service'
 import { UserDetails } from 'src/services/user-details.service';
+import { UserAuthentication } from 'src/services/user-authentication.service';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
@@ -10,7 +11,13 @@ import { UserDetails } from 'src/services/user-details.service';
 export class SearchPageComponent implements OnInit {
   searchTerm = '';
   dataFromBackend:any = [];
-  constructor(private route: ActivatedRoute, private userActionsServObj: UserActions, public userServObj: UserDetails) { }
+  constructor(private route: ActivatedRoute, private userAuthServObj: UserAuthentication ,private userActionsServObj: UserActions, public userServObj: UserDetails) { 
+    this.route.params.subscribe(
+      (params : Params) => {
+        this.ngOnInit(); // not cool at all to do this. not cool must be taken care **later**
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.searchTerm = this.route.snapshot.params['searchTerm'];
@@ -20,14 +27,18 @@ export class SearchPageComponent implements OnInit {
     },err => {
       console.log(err);
     });
+    
   }
-
-  followAUser(id: number){
+  
+  followAUser(id: number, actualData){
+    if(!this.userAuthServObj.isLoggedIn){
+      return false;
+    }
     this.userActionsServObj.followAUser(id).subscribe(res => {
       console.log(res);
     }, err => {
       console.log(err);
     });
+    actualData.state =true;
   }
-
 }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/">IGG-Clonex</a>
+    <a class="navbar-brand" routerLink="/">IGG-Clonex <span class="badge badge-secondary">Alpha Version</span> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,6 +15,9 @@
           </li>
           <li class="nav-item" *ngIf="userAuthObj.isLoggedIn">
             <a class="nav-link"  routerLinkActive="active" [routerLink]="['profile', userServObj.uuid ]">Profile</a>
+          </li>
+          <li class="nav-item" *ngIf="userAuthObj.isLoggedIn">
+            <a class="nav-link" (click)="logout()"  routerLink=""><span class="badge badge-danger">Logout</span></a>
           </li>
           <li class="nav-item" *ngIf="!userAuthObj.isLoggedIn">
             <a class="nav-link" routerLinkActive="active" routerLink="userauth">Login/Register</a>
