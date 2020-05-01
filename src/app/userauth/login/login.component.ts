@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.userServObj.loginUser(this.loginForm.value).subscribe( res => {
       console.log(res);
-      this.userObjServ.setJWTToLocal(res['jwt']['access_token'], res['uuid']);
+      this.userObjServ.setJWTToLocal(res['jwt']['access_token'], res['uuid'], res['username']);
       this.userServObj.isLoggedIn = true;
       console.log('USER OBJ SERV: ', this.userObjServ);
     }, err => {

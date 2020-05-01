@@ -6,11 +6,11 @@
         <!-- as of now static -->
       </div>
       <div class="col-sm-10">
-        <p class="my-1">{{pobj.username}}</p>
+        <a [routerLink]="['/profile', pobj.uuid ]"><p class="my-1">{{pobj.username}}</p></a>
       </div>
     </div>
   </div>
-  <img class="card-img-top" [src]="pobj.postLink" alt="Card image cap">
+  <img class="card-img-top" [src]="'http://localhost:8000/'+ pobj.postLink" alt="Card image cap">
   <div class="card-body">
     <button (click)="likePost(pobj.postid,pobj)" class="btn btn-sm btn-outline-danger my-2" *ngIf="!pobj.hasLiked">Like &lt;3</button>
     <button (click)="unlikePost(pobj.postid,pobj)" class="btn btn-sm btn-danger my-2" *ngIf="pobj.hasLiked">Unlike</button>

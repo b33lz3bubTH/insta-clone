@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserPost} from '../shared-models/posts.model';
+import {UserPost, Comment} from '../shared-models/posts.model';
 import { UserDetails } from 'src/services/user-details.service';
+
 @Component({
   selector: 'app-userspost',
   templateUrl: './userspost.component.html',
@@ -26,11 +27,11 @@ export class UserspostComponent implements OnInit {
     y.totalLikeCount--;
     //HTTP call to unlike
   }
-  commentOnPost(comment,postCommentedOnId,ActualPostObj){
+  commentOnPost(comment, postCommentedOnId, ActualPostObj){
     console.log("Comment: ", comment);
     console.log("on Post: ", postCommentedOnId);
     console.log("Actual Post OBj: ", ActualPostObj);
-    ActualPostObj.setCommentOnPost(this.userobj.username,comment)
+    ActualPostObj.setCommentOnPost(this.userobj.username,comment);
     console.log("Actual Post OBj: ", ActualPostObj);
 
   }

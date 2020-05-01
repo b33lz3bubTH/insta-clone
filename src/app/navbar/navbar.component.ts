@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserAuthentication } from 'src/services/user-authentication.service';
+import { Router } from '@angular/router';
+import { UserDetails } from 'src/services/user-details.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +9,13 @@ import { UserAuthentication } from 'src/services/user-authentication.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(public userAuthObj: UserAuthentication) { }
+  @ViewChild('searchBox', {static:false}) searchBoxRef: ElementRef;
+  
+  constructor(public userAuthObj: UserAuthentication, private route: Router, public userServObj: UserDetails){}
 
   ngOnInit(): void {
   }
-
+  search_term(){
+    this.route.navigate(['/search-page', this.searchBoxRef.nativeElement.value]);
+  }
 }

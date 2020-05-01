@@ -1,0 +1,14 @@
+<div class="container my-5">
+    <div class="jumbotron">
+        <p display="display-4 my-5">Search Result for: {{ searchTerm }}</p>
+        <div class="row" *ngFor="let data of dataFromBackend;" >     
+            <div class="col-md-4">
+                <h5><a [routerLink]="['/profile', data.uuid ]">{{data.username}}</a></h5>
+            </div>
+            <div class="col-md-8">
+                <h5 *ngIf="data.state"> <span class="badge badge-success">Following</span> </h5>
+                <span *ngIf="!data.state"> <button class="btn btn-sm btn-info" (click)="followAUser(data.uuid); data.state=true"> Follow + </button> </span>
+            </div>  
+        </div>
+    </div>
+</div>

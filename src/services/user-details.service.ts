@@ -5,11 +5,11 @@ import { BackendDetails } from 'src/services/backend-details.service';
 @Injectable({providedIn: 'root'})
 export class UserDetails {
     uuid:number = 0;
-    username:string = "Sourav"; // set this
+    username:string = ""; // set this
     profileLink:string = "https://via.placeholder.com/1000"; //good plan with this.
-    followerCount: number = 420; // set this
-    followingCount:number = 69; // set this
-    description: string = "WELCOME TO MY PROFILE";
+    followerCount: number = 0; // set this
+    followingCount:number = 0; // set this
+    description: string = "";
     jwtToken = '';
     constructor(private http: HttpClient, private backendConfigObj: BackendDetails){}
 
@@ -19,23 +19,23 @@ export class UserDetails {
         this.followingCount = followingCount;
     }
 
-    getCurrentLoggedUserDetails() {
-        return this.http.get(this.backendConfigObj.fetchUserDetailsApi(this.uuid), {
-            headers: new HttpHeaders().set('Authorization', ('Bearer ' + this.jwtToken))
-        });
+    getCurrentLoggedUserDetails(id: number) {
+        return this.http.get(this.backendConfigObj.fetchUserDetailsApi(id), {});
     }
 
 
-    setJWTToLocal(token,uuid){
+    setJWTToLocal(token,uuid, username){
         this.jwtToken = token;
         this.uuid = uuid;
         localStorage.setItem('JWT', token);
         localStorage.setItem('UUID', uuid);
+        localStorage.setItem('username', username);
     }
     getJwtFromLocal(){
-        if (localStorage.getItem('JWT') && localStorage.getItem('UUID')){
+        if (localStorage.getItem('JWT') && localStorage.getItem('UUID') && localStorage.getItem('username')){
             this.jwtToken = localStorage.getItem('JWT');
             this.uuid = +localStorage.getItem('UUID');
+            this.username = localStorage.getItem('username');
             return true;
         }
         return false;

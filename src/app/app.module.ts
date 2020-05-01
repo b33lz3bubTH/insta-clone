@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { UserAuthModule } from './userauth/userauth.module';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     UserprofileComponent,
     HomecomponentComponent,
     FooterComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
