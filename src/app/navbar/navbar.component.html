@@ -11,20 +11,24 @@
       <form class="form-inline my-2 my-lg-0" (ngSubmit)="search_term()">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/" [routerLinkActiveOptions]="{exact: true}">
+              <i class="fas fa-home"></i>
+            </a>
           </li>
           <li class="nav-item" *ngIf="userAuthObj.isLoggedIn">
-            <a class="nav-link"  routerLinkActive="active" [routerLink]="['profile', userServObj.uuid ]">Profile</a>
+            <a class="nav-link"  routerLinkActive="active" [routerLink]="['profile', userServObj.uuid ]">
+              <i class="fas fa-address-card"></i>
+            </a>
           </li>
           <li class="nav-item" *ngIf="userAuthObj.isLoggedIn">
-            <a class="nav-link" (click)="logout()"  routerLink=""><span class="badge badge-danger">Logout</span></a>
+            
           </li>
           <li class="nav-item" *ngIf="!userAuthObj.isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" routerLink="userauth">Login/Register</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="userauth"><i class="fas fa-user-plus"></i></a>
           </li>
         </ul>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" #searchBox>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
 </nav>

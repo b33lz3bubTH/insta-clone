@@ -1,15 +1,16 @@
 <div class="container my-2">
-    <div class="jumbotron">
+    <div class="jumbotron" >
         <div class="container">
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-2">
+                <div class="col-md-2 my-3">
                     <img [src]="userobj.profileLink" class="w-100" style="border-radius: 50%;">
                 </div>
                 <div class="col-md-8 my-4">
-                    <h3><strong>{{ userobj.username }}</strong></h3>
+                    <h3><strong> {{ userobj.username }} </strong></h3>
                     <p style="font-size: 17px;"><strong>{{ userobj.followerCount }}</strong> follower | <strong>{{ userobj.followingCount }}</strong> following | <strong>{{ postServObj.userposts.length }}</strong> Posts </p>
                     <h6>{{ userobj.description }}</h6>
+                    <h6 *ngIf="userAuthObj.isLoggedIn"><button class="btn btn-md btn-warning" (click)="logout()"  routerLink="">Logout <i class="fas fa-sign-out-alt"></i></button></h6>
                 </div>
                 <div class="col-md-1"></div>
 

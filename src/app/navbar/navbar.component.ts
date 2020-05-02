@@ -19,10 +19,5 @@ export class NavbarComponent implements OnInit {
     if(this.searchBoxRef.nativeElement.value.length < 3) return;
     this.route.navigate(['/search-page', this.searchBoxRef.nativeElement.value]);
   }
-  logout(){
-    console.log("LOGOUT");
-    localStorage.clear();
-    this.userAuthObj.isLoggedIn = false;
-    this.userServObj.logoutAction();
-  }
+  
 }

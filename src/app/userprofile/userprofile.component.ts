@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDetails } from 'src/services/user-details.service';
 import { PostStorage } from 'src/services/post-storage.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UserAuthentication } from 'src/services/user-authentication.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -10,14 +11,19 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor( public userobj: UserDetails, public postServObj: PostStorage, private route: ActivatedRoute) { 
+  constructor( public userServObj: UserDetails, public userobj: UserDetails, public postServObj: PostStorage, private route: ActivatedRoute, public userAuthObj: UserAuthentication) { 
     this.route.params.subscribe(
       (params : Params) => {
         this.ngOnInit(); // not cool at all to do this. not cool must be taken care **later**
       }
     );
   }
-
+  logout(){
+    console.log("LOGOUT");
+    localStorage.clear();
+    this.userAuthObj.isLoggedIn = false;
+    this.userServObj.logoutAction();
+  }
   ngOnInit(): void {
     // users profile details
     this.userobj.getCurrentLoggedUserDetails(this.route.snapshot.params['id']).subscribe(res => {
