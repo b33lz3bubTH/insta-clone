@@ -23,4 +23,16 @@ export class UserActions {
             headers: new HttpHeaders().set('Authorization', ('Bearer ' + this.userServObj.jwtToken))
         });
     }
+
+    unfollowAUser(id: number){
+        // cant send data with delete so. this is the way am doing it.
+        let args = {
+            "following_id": id,
+        }
+        const options = {
+            headers: new HttpHeaders().set('Authorization', ('Bearer ' + this.userServObj.jwtToken)),
+            body: args
+        }
+        return this.http.delete(this.backendConfigObj.followUserApi(this.userServObj.uuid),options);
+    }
 }

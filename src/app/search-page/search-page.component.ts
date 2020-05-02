@@ -29,7 +29,17 @@ export class SearchPageComponent implements OnInit {
     });
     
   }
-  
+  unfollowAUser(id: number, actualData){
+    if(!this.userAuthServObj.isLoggedIn){
+      return false;
+    }
+    this.userActionsServObj.unfollowAUser(id).subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    });
+    actualData.state = false;
+  }
   followAUser(id: number, actualData){
     if(!this.userAuthServObj.isLoggedIn){
       return false;

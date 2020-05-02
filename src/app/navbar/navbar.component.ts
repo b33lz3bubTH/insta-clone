@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   search_term(){
+    if(this.searchBoxRef.nativeElement.value.length < 3) return;
     this.route.navigate(['/search-page', this.searchBoxRef.nativeElement.value]);
   }
   logout(){

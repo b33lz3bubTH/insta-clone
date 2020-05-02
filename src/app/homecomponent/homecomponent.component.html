@@ -8,6 +8,11 @@
 </div>
 
 <div class="container my-5" *ngIf="userAuthObj.isLoggedIn">
+    <div class="row justify-content-center" *ngIf="!postServObj.allPost.length">
+        <div class="jumbotron">
+            <h1 class="display-5">You Dont Follow Any one, So no content for you!</h1>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <app-userspost [postObj]="x" *ngFor="let x of postServObj.allPost"></app-userspost>
     </div>

@@ -7,7 +7,7 @@
                 <h5><a [routerLink]="['/profile', data.uuid ]">{{data.username}}</a></h5>
             </div>
             <div class="col-md-8">
-                <h5 *ngIf="data.state"> <span class="badge badge-success">Following</span> </h5>
+                <h5 *ngIf="data.state"> <span class="badge badge-success">Following</span> | <button class="btn btn-sm btn-outline-danger" (click)="unfollowAUser(data.uuid, data)"> &#10008;</button></h5>
                 <span *ngIf="!data.state"> <button class="btn btn-sm btn-info" (click)="followAUser(data.uuid, data)"> Follow + </button> </span>
             </div>
             <hr class="w-50"> 

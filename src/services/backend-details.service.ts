@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { UserDetails } from './user-details.service';
 
 @Injectable({providedIn: 'root'})
 export class BackendDetails{
