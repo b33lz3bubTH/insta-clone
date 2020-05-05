@@ -10,8 +10,8 @@ Output:
 # proj-instaclone
 
 
-cant continue the proj, GOING BUSY these days.
+# cant continue the proj, GOING BUSY these days.
 
-features to implement:
+# features to implement:
 	1. LIKE and COMMENT
 	2. PROFILE PIC LOGIC ( PROFILE PIC WILL BE THE LAST PHOTO THAT USER UPLOADS, then it will be DYNAMIC)
