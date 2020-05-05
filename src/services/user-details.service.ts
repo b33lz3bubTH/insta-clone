@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BackendDetails } from 'src/services/backend-details.service';
 
 @Injectable({providedIn: 'root'})
@@ -32,6 +32,7 @@ export class UserDetails {
     setJWTToLocal(token,uuid, username){
         this.jwtToken = token;
         this.uuid = uuid;
+        this.username = username;
         localStorage.setItem('JWT', token);
         localStorage.setItem('UUID', uuid);
         localStorage.setItem('username', username);
