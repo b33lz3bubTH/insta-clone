@@ -5,7 +5,7 @@
 
 Output:
   youtube - https://www.youtube.com/watch?v=xIue9v3NZw8
-  hosting: https://instaprojclone.000webhostapp.com/
+  hosting: http://18.223.15.203/profile/1
 
 # proj-instaclone
 
