@@ -1,0 +1,20 @@
+USER:
+	id - PK AUTO INC
+	username - UNIQUE
+	email
+	password - md5(pass)
+
+FOLLOW TABLE
+
+	id- PK AUTO INC
+	follwer_id - <USER_ID>: 1
+	following_id - <USER_ID>: 2
+	
+
+	CREATE TABLE follow_table(
+	    id INT NOT NULL AUTO_INCREMENT,
+	    follwer_id INT,
+	    following_id INT,
+	    PRIMARY KEY (id)
+	)
+	CREATE UNIQUE INDEX unique_follow ON follow_table(follwer_id, following_id);
