@@ -7,9 +7,7 @@ Output:
   hosting: http://18.223.15.203/profile/1
 
 # proj-instaclone
-
-
-# cant continue the proj, GOING BUSY these days.
+.
 
 # features to implement:
 	1. LIKE and COMMENT
