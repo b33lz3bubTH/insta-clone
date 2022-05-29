@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserPost, Comment} from '../shared-models/posts.model';
 import { UserDetails } from 'src/services/user-details.service';
+import { BackendDetails } from 'src/services/backend-details.service';
 
 @Component({
   selector: 'app-userspost',
@@ -9,7 +10,7 @@ import { UserDetails } from 'src/services/user-details.service';
 })
 export class UserspostComponent implements OnInit {
   @Input('postObj') pobj: UserPost;
-  constructor(private  userobj: UserDetails) { }
+  constructor(private  userobj: UserDetails, public backendUserObj: BackendDetails) { }
 
   ngOnInit(): void {
   }

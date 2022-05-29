@@ -3,6 +3,7 @@ import { UserDetails } from 'src/services/user-details.service';
 import { PostStorage } from 'src/services/post-storage.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserAuthentication } from 'src/services/user-authentication.service';
+import {BackendDetails} from "./../../services/backend-details.service";
 
 @Component({
   selector: 'app-userprofile',
@@ -11,7 +12,7 @@ import { UserAuthentication } from 'src/services/user-authentication.service';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor( public userServObj: UserDetails, public userobj: UserDetails, public postServObj: PostStorage, private route: ActivatedRoute, public userAuthObj: UserAuthentication) { 
+  constructor( public userServObj: UserDetails, public userobj: UserDetails, public postServObj: PostStorage, private route: ActivatedRoute, public userAuthObj: UserAuthentication, public backendServiceObj: BackendDetails) { 
     this.route.params.subscribe(
       (params : Params) => {
         this.ngOnInit(); // not cool at all to do this. not cool must be taken care **later**

@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <img class="card-img-top" [src]="'http://localhost:8000/'+ pobj.postLink" alt="Card image cap">
+    <img class="card-img-top" src="{{this.backendUserObj.loadImage(pobj.postLink)}}" alt="Card image cap">
     <div class="card-body">
       <button (click)="likePost(pobj.postid,pobj)" class="btn btn-sm btn-outline-danger my-2" *ngIf="!pobj.hasLiked">Like &lt;3</button>
       <button (click)="unlikePost(pobj.postid,pobj)" class="btn btn-sm btn-danger my-2" *ngIf="pobj.hasLiked">Unlike</button>
